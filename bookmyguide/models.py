@@ -15,9 +15,11 @@ class DuxProfile(models.Model):
         return "%s" %(self.full_name)
 
 class Places(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200,unique=True)
     average_time=models.BigIntegerField(default=30)
     price = models.BigIntegerField(blank=True)
+    description = models.TextField(blank=True)
+    photo = models.TextField(validators=[URLValidator()],blank=True)
 
     def __unicode__(self):
         return "%s" %(self.name)

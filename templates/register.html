@@ -1,0 +1,42 @@
+{% load static %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Register - DUX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  </head>
+  <body>
+  	<div class="row">
+    <form class="col s12" id="register_form" method="post" action="/register/">
+      {% csrf_token %}
+      {% if error %}
+      {{ error }}
+      {% endif %}
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="full_name" name="full_name" type="text" class="validate">
+          <label for="full_name">Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="mobile_no" name="mobile_no" type="text" class="validate">
+          <label for="mobile_no">Mobile Number</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="password" name="password" type="password" class="validate">
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <input type="submit" name="submit"/>
+    </form>
+  </div>
+  	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  	<script src="{% static "js/main.js" %}"></script>
+  </body>
+</html>
