@@ -19,7 +19,8 @@ class Places(models.Model):
     average_time=models.BigIntegerField(default=30)
     price = models.BigIntegerField(blank=True)
     description = models.TextField(blank=True)
-    photo = models.TextField(validators=[URLValidator()],blank=True)
+    photo = models.TextField(blank=True)
+    likes = models.BigIntegerField(default=100)
 
     def __unicode__(self):
         return "%s" %(self.name)

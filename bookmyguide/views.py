@@ -4,8 +4,11 @@ from django.contrib.auth import authenticate
 from bookmyguide.models import *
 
 def IndexView(request):
-    template_name = 'index.html'
-    return render(request,template_name,{})
+	places_list = Places.objects.order_by('-likes')[:10]
+	for place in places_list:
+		place.url = place.name.replace(' ', '_')
+	template_name = 'index.html'
+	return render(request,template_name,{'places':places_list})
 
 def LoginView(request):
 	pass

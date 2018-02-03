@@ -54,8 +54,35 @@
     </div>
   </nav>         
 
-  <div id="index-banner" class="parallax-container">
-  	<a href="http://materializecss.com/getting-started.html" style="color: white">
+{% if places %}
+            <ul>
+                {% for place in places %}
+                <div id="index-banner" class="parallax-container">
+    <a href="/showguides/{{place.url}}" style="color: white">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h4 class="header center grey-text text-lighten-2" >{{ place.name }}</h4>
+        <div class="row center">
+          <h5 class="header col s12 light" ><p>{{place.description}}</p></h5>
+        </div>
+        <br><br>
+
+      </div>
+    </div>
+                <a href="http://materializecss.com/getting-started.html" style="color: white">
+
+    <div class="parallax"><img src={{ place.photo }} alt="Unsplashed background img 1"></div>
+       </a>
+
+  </div>
+                <li>{{ place.name }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <strong>There are no places present.</strong>
+            <a href="http://materializecss.com/getting-started.html" style="color: white">
+            <div id="index-banner" class="parallax-container">
     <div class="section no-pad-bot">
       <div class="container">
         <br><br>
@@ -67,11 +94,10 @@
 
       </div>
     </div>
-    </a>
     <div class="parallax"><img src="{% static "ghat.jpg" %}" alt="Unsplashed background img 1"></div>
-
   </div>
-
+  </a>
+        {% endif %}
 
   <!--<div class="container">
     <div class="section">
@@ -110,7 +136,7 @@
   </div>-->
 
 
-  <div class="parallax-container valign-wrapper">
+  <!-- <div class="parallax-container valign-wrapper">
     <div class="section no-pad-bot">
       <div class="container">
         <div class="row center">
@@ -119,7 +145,7 @@
       </div>
     </div>
     <div class="parallax"><img src="{% static "background2.jpg" %}" alt="Unsplashed background img 2"></div>
-  </div>
+  </div> -->
 
   <!--<div class="container">
     <div class="section">
@@ -136,7 +162,7 @@
   </div>-->
 
 
-  <div class="parallax-container valign-wrapper">
+  <!-- <div class="parallax-container valign-wrapper">
     <div class="section no-pad-bot">
       <div class="container">
         <div class="row center">
@@ -145,7 +171,7 @@
       </div>
     </div>
     <div class="parallax"><img src="{% static "background3.jpg" %}" alt="Unsplashed background img 3"></div>
-  </div>
+  </div> -->
 
   <footer class="page-footer teal">
     <div class="container">
