@@ -6,12 +6,13 @@ from django.core.validators import URLValidator
 
 class DuxProfile(models.Model):
     user = models.OneToOneField(User)
+    full_name = models.CharField(max_length=200)
     mobile_number = models.BigIntegerField()
     profile_photo = models.TextField(validators=[URLValidator()],blank=True)
     is_guide = models.BooleanField(default=False)
 
     def __unicode__(self):
-        return "%s %s" %(self.user.first_name,self.user.last_name)
+        return "%s" %(self.full_name)
 
 class Places(models.Model):
     name = models.CharField(max_length=200)
@@ -31,6 +32,6 @@ class Guide(models.Model):
     is_verified= models.BooleanField(default=False)
     
     def __unicode__(self):
-        return "%s %s" %(self.dux_profile.user.first_name,self.dux_profile.user.last_name)
+        return "%s" %(self.dux_profile.full_name)
 
 
